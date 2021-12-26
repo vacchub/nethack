@@ -42,7 +42,7 @@ int attack_run(handle *hand, struct in_addr ipaddr)
 			execl("./attack", "./attack", mode, 
 					hand->interface, gateway, host, NULL);
 			printf("execl error\n");
-			return -1;
+			exit(-1);
 		default:
 			/* parent */
 			break;
@@ -64,7 +64,7 @@ int attack_run(handle *hand, struct in_addr ipaddr)
 			/* child */
 			execl("./fragrouter", "./fragrouter", hand->interface, host, NULL);
 			printf("execl error\n");
-			return -1;
+			exit(-1);
 		default:
 			/* parent */
 			break;
@@ -85,7 +85,7 @@ int attack_run(handle *hand, struct in_addr ipaddr)
 			/* child */
 			execl("./sniff", "./sniff",  hand->interface, host, NULL);
 			printf("execl error\n");
-			return -1;
+			exit(-1);
 		default:
 			/* parent */
 			break;
